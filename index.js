@@ -1,3 +1,1 @@
-import app from 'app'
-
-app
+require('app')
