@@ -3,13 +3,14 @@ module.exports = {
     'browser': true,
     'node': true,
   },
+  plugins: ['react'],
+  extends: ['standard', 'plugin:react/recommended'],
   parserOptions: {
     parser: 'babel-eslint',
     ecmaVersion: 6,
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
   },
-  extends: 'standard',
   rules: {
     "comma-dangle": ["error", "always-multiline"],
 

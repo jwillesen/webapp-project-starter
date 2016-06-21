@@ -6,11 +6,12 @@ var autoprefixer = require('autoprefixer')
 
 module.exports = {
   entry: {
-    bundle: './index.js',
+    bundle: './lib/index.js',
   },
 
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'public/js'),
+    publicPath: '/js/',
     filename: '[name].js',
   },
 
