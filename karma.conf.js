@@ -4,11 +4,10 @@ var path = require('path')
 var webpackConfig = require('./webpack.config.js')
 
 webpackConfig.module.loaders[0].loader = 'babel-istanbul'
-webpackConfig.module.loaders[0].exclude = [/node_modules/, path.resolve('spec'), path.resolve('index.js')]
 webpackConfig.module.loaders.unshift({
   test: /\.js$/,
   loader: 'babel',
-  exclude: [path.resolve('lib'), /node_modules/],
+  include: [path.resolve('spec')],
 })
 
 module.exports = function (config) {

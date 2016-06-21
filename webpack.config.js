@@ -35,14 +35,14 @@ module.exports = {
     preLoaders: [{
       test: /\.js$/,
       loader: 'eslint',
-      exclude: /node_modules/,
+      include: [path.resolve('lib'), path.resolve('spec')],
     }],
 
     loaders: [
       {
         test: /\.js$/,
         loader: 'babel',
-        exclude: /node_modules/,
+        include: [path.resolve('lib')],
       },
       { test: /\.scss$/, loader: 'style!css!postcss!sass', exclude: /node_modules/ },
       { test: /\.css$/, loader: 'style!css!postcss', exclude: /node_modules/ },
