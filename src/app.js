@@ -1,10 +1,9 @@
-import React, {PropTypes as prop} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class App extends React.Component {
-  static get propTypes () {
-    return {
-      value: prop.number,
-    }
+  static propTypes = {
+    value: PropTypes.number,
   }
 
   evenize (value) {

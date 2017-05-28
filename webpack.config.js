@@ -1,52 +1,48 @@
 /* eslint no-var: "off" */
 
 var path = require('path')
-var webpack = require('webpack')
-var autoprefixer = require('autoprefixer')
 
 module.exports = {
   entry: {
-    bundle: './lib/index.js',
+    bundle: './src/index.js',
   },
 
   output: {
-    path: path.join(__dirname, 'public/js'),
-    publicPath: '/js/',
     filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
   },
-
-  resolve: {
-    root: [
-      path.join(__dirname, 'lib'),
-    ],
-  },
-
-  postcss: function () {
-    return [autoprefixer]
-  },
-
-  plugins: [
-    new webpack.DefinePlugin({
-      VERSION: JSON.stringify(require('./package.json').version),
-    }),
-  ],
 
   module: {
-    preLoaders: [{
-      test: /\.js$/,
-      loader: 'eslint',
-      include: [path.resolve('lib'), path.resolve('spec')],
-    }],
-
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel',
-        include: [path.resolve('lib')],
+        include: [path.resolve(__dirname, 'src')],
+        loader: 'eslint-loader',
+        enforce: 'pre',
+      }, {
+        test: /\.js$/,
+        include: [path.resolve(__dirname, 'src')],
+        use: [{
+          loader: 'babel-loader',
+          query: {
+            cacheDirectory: true,
+          },
+        }],
+      }, {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader',
+        ],
       },
-      { test: /\.scss$/, loader: 'style!css!postcss!sass', exclude: /node_modules/ },
-      { test: /\.css$/, loader: 'style!css!postcss', exclude: /node_modules/ },
     ],
   },
 
+  devtool: 'cheap-module-source-map',
+
+  devServer: {
+    disableHostCheck: true,
+    contentBase: path.join(__dirname, 'public'),
+  },
 }

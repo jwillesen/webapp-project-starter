@@ -1,5 +1,6 @@
 node_modules
-/*-workspace
-/dist
-/coverage
-/public/js
+dist
+coverage
+.babel-cache
+npm-debug.log
+yarn-error.log

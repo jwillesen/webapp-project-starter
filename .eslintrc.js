@@ -1,16 +1,12 @@
 module.exports = {
+  parser: 'babel-eslint',
   env: {
     'browser': true,
     'node': true,
+    'jest': true,
   },
   plugins: ['react'],
   extends: ['standard', 'plugin:react/recommended'],
-  parser: 'babel-eslint',
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-    ecmaFeatures: { jsx: true },
-  },
   rules: {
     "comma-dangle": ["error", "always-multiline"],
 
