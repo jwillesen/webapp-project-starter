@@ -1,6 +1,3 @@
 node_modules
 dist
 coverage
-.babel-cache
-npm-debug.log
-yarn-error.log
